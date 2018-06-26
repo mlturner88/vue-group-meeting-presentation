@@ -1,49 +1,333 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"
+	      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+	<title>reveal.js</title>
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+	<link rel="stylesheet"
+	      href="css/reveal.css">
+	<link rel="stylesheet"
+	      href="css/theme/black.css">
+	<link rel="stylesheet"
+	      href="css/custom.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet"
+	      href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+
+	<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+	<script src="js/conditional-example.js"
+	        defer></script>
+	<script src="js/list-example.js"
+	        defer></script>
+	<script src="js/computed-example.js"
+	        defer></script>
+	<script src="js/form-example.js"
+	        defer></script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section class="introduction"
+			         data-markdown>
+				<textarea data-template>
+					![Vue Logo](assets/vue_logo.png)
+
+					## Welcome to Vue.js!
+				</textarea>
+			</section>
+
+			<section>
+				<h2>What Is Vue?</h2>
+				<ul>
+					<li>Vue is a frontend framework for building user interfaces on the web. It is used to create SPAs (single page applications).</li>
+					<li class="fragment">Vue is only focused on the view layer of a SPA and is very easy to get started with. This also means that it is very
+						easy to integrate with any other JavaScript/frontend libraries available.</li>
+				</ul>
+			</section>
+
+			<section>
+				<h3>Vue Template</h3>
+				<div>Creating a template in Vue is just simple HTML.</div>
+				<pre class="fragment"><code data-trim data-noescape>
+					&lt;div&gt;{{ message }}&lt;/div&gt;
+				</code></pre>
+			</section>
+
+			<section>
+				<h3>Vue Components</h3>
+				<div>Vue is a component-based library which means that we build our SPA using reusable pieces. We use basic JavaScript objects
+					to define our components.</div>
+				<pre class="fragment"><code data-trim data-noescape>
+					var component = {
+					 name: "MyComponent",
+					 data: function() {
+					  return {
+					   message: "Hello from Vue!"
+					  };
+					 }
+					};
+				</code></pre>
+			</section>
+
+			<section>
+				<h3>Conditional Rendering</h3>
+				<div>We can use Vue-specific syntax to conditionally render HTML elements. In the below code, we want to only show one element
+					depending on an index field. Also, we want to toggle the index when the button is clicked. We use Vue to hook up the
+					click event. elements.
+				</div>
+				<pre class="fragment"><code data-trim data-noescape>
+					&lt;div&gt;
+					 &lt;span v-if="index === 0"&gt;First&lt;/span&gt;
+					 &lt;span v-else-if="index === 1"&gt;Second&lt;/span&gt;
+					 &lt;span v-else-if="index === 2"&gt;Third&lt;/span&gt;
+					 &lt;button @click="toggle"&gt;Toggle&lt;/button&gt;
+					&lt;/div&gt;
+				</code></pre>
+			</section>
+
+			<section>
+				<h3>Conditional Rendering</h3>
+				<div>In our component object we initialize our index field as a data property. We also define our click event handler as a
+					method.
+				</div>
+				<pre class="fragment"><code data-trim data-noescape>
+					var component = {
+					 name: "MyComponent",
+					 data: function() {
+					  return {
+					   index: 0
+					  };
+					 },
+					 methods: {
+					  toggle: function() {
+					   /* logic omitted to toggle between index 0-3 */
+					  }
+					 }
+					};
+				</code></pre>
+			</section>
+
+			<section data-state="conditional">
+				<h2>Conditional Rendering (Example)</h2>
+				<div id="conditional-example-app">
+					<div>
+						<span v-if="index === 0"
+						      class="color1">First</span>
+						<span v-else-if="index === 1"
+						      class="color2">Second</span>
+						<span v-else-if="index === 2"
+						      class="color3">Third</span>
+					</div>
+					<button class="custom-button"
+					        @click="toggle">Toggle</button>
+				</div>
+			</section>
+
+			<section>
+				<h3>Rendering Collections</h3>
+				<div>If we have a dynamic number of items to be rendered then we can iterate over a data collection to generate our template.
+					Below we take a simple array of objects and declare how to render them.</div>
+				<pre class="fragment"><code data-trim data-noescape>
+					&lt;div&gt;
+					 &lt;ul&gt;
+					  &lt;li v-for="entry in cities"&gt;
+					   {{ entry.name }}, {{ entry.state }}
+					  &lt;/li&gt;
+					 &lt;/ul&gt;
+					&lt;/div&gt;
+				</code></pre>
+			</section>
+
+			<section>
+				<h3>Rendering Collections</h3>
+				<div>In our component object we just initial our cities array with a few city objects with a city and state property.</div>
+				<pre class="fragment"><code data-trim data-noescape>
+					var component = {
+					 name: "MyComponent",
+					 data: function() {
+					 return {
+					   cities: [
+					    { name: "Knoxville", state: "TN" },
+					    { name: "Asheville", state: "NC" },
+					    { name: "Detroit", state: "MI" }
+					   ]
+					  };
+					 }
+					};
+				</code></pre>
+			</section>
+
+			<section data-state="lists">
+				<h2>Conditional Rendering (Example)</h2>
+				<div id="list-example-app">
+					<ul>
+						<li v-for="entry in cities"
+						    :key="entry.name">
+							{{ entry.name }}, {{ entry.state }}
+						</li>
+					</ul>
+				</div>
+			</section>
+
+			<section>
+				<h3>Computed Properties</h3>
+				<div>There are many circumstances where we need to react to data and transform or modify it in some way before we can render
+					it. Let's say in our previous example we wanted the cities to be alphabetized. We can declare a computed property like
+					below which sorts our cities.</div>
+				<pre class="fragment"><code data-trim data-noescape>
+					var component = {
+					  data: function() { [ /* ... */ ] },
+					  computed: {
+					   sortedCities: function() {
+					    return externalSortingFunction(this.cities);
+					   }
+					  }
+					};
+				</code></pre>
+			</section>
+
+			<section>
+				<h3>Computed Properties</h3>
+				<div>There are many circumstances where we need to react to data and transform or modify it in some way before we can render
+					it. Let's say in our previous example we wanted the cities to be alphabetized. We can declare a computed property like
+					below which sorts our cities.</div>
+				<pre class="fragment"><code data-trim data-noescape>
+					&lt;div&gt;
+					 &lt;ul&gt;
+					  &lt;li v-for="entry in <mark>sortedCities</mark>"&gt;
+					   {{ entry.name }}, {{ entry.state }}
+					  &lt;/li&gt;
+					 &lt;/ul&gt;
+					&lt;/div&gt;
+				</code></pre>
+			</section>
+
+			<section data-state="computed">
+				<h3>Computed Properties</h3>
+				<div>A computed property is used just like a regular data property. The difference is that Vue caches the results of the computed
+					factory and will only re-evaluate the computed property when it detects that any of the underlying data in the computed
+					property has changed.</div>
+				<div id="computed-example-app" class="fragment">
+					<ul>
+						<li v-for="(entry, i) in sortedCities"
+						    :key="entry.name"
+						    :class="'color' + (i + 1)">
+							{{ entry.name }}, {{ entry.state }}
+						</li>
+					</ul>
+				</div>
+			</section>
+
+			<section>
+				<h3>Reusable Components</h3>
+				<div>What makes Vue powerful is its ability to combine all of these basic concepts into reusable components. We'll next show
+					a basic input form component that may be re-used. The form will have a label and an input field.</div>
+				<pre class="fragment"><code data-trim data-noescape>
+					&lt;div&gt;
+					 &lt;label&gt;{{ inputLabel }}&lt;/label&gt;
+					 &lt;input :type="inputType" v-model="inputValue" /&gt;
+					&lt;/div&gt;
+				</code></pre>
+			</section>
+
+			<section>
+				<h3>Component Input</h3>
+				<div>We need to define the input parameters for our form component. We need to know what the label is, the form value and
+					what type of input it is.</div>
+				<pre class="fragment"><code data-trim data-noescape>
+					var component = {
+					 name: "FormComponent",
+					 props: {
+					  inputLabel: String,
+					  inputType: String,
+					  value: [String, Number, Object]
+					 },
+					 computed: {
+					  inputValue: {
+					   get: function() {
+					    return this.value;
+					   },
+					   set: function(value) {
+					    this.$emit("input", value);
+					   }
+					  }
+					 }
+					};
+				</code></pre>
+			</section>
+
+			<section>
+				<h3>Using Our Component</h3>
+				<div>What makes Vue powerful is its ability to combine all of these basic concepts into reusable components. We'll next show
+					a basic input form component that may be re-used. The form will have a label and an input field.</div>
+				<pre class="fragment"><code data-trim data-noescape>
+					&lt;vue-form-component
+					   v-model="firstName"
+					   input-label="First Name:"
+					   input-type="text"&gt;&lt;/vue-form-component&gt;
+					&lt;vue-form-component
+					   v-model="lastName"
+					   input-label="Last Name:"
+					   input-type="text"&gt;&lt;/vue-form-component&gt;
+				</code></pre>
+			</section>
+
+			<section data-state="form">
+				<h3>Component Form Example</h3>
+				<div id="form-example-app">
+					<vue-form-component v-model="firstName"
+					                    input-label="First Name:"
+										input-type="text"></vue-form-component>
+					<vue-form-component v-model="lastName"
+					                    input-label="Last Name:"
+					                    input-type="text"></vue-form-component>
+					<div>Your name is {{ firstName }} {{ lastName }}</div>
+				</div>
+			</section>
+
+			<section data-markdown>
+				<textarea data-template>
+					## Questions?
+
+					This presentation is available on GitHub at [https://goo.gl/W5pd4n](https://goo.gl/W5pd4n)
+				</textarea>
+			</section>
 		</div>
+	</div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+			]
+		});
+	</script>
+</body>
+
 </html>

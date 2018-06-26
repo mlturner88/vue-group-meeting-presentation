@@ -1,0 +1,54 @@
+.introduction img {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.custom-button {
+    cursor: pointer;
+    border-radius: 3px;
+    border: 2px solid bisque;
+    background: transparent;
+    color: bisque;
+    padding: 3px 10px;
+}
+
+.color1 {
+    color: #3535e0;
+}
+
+.color2 {
+    color: lightgreen;
+}
+
+.color3 {
+    color: plum;
+}
+
+#form-example-app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px !important;
+}
+
+.form-row label {
+    flex-basis: 100px;
+    text-align: right;
+    font-size: 18px !important;
+}
+
+.form-row input {
+    max-width: 200px;
+    margin-left: 15px;
+    padding: 3px 5px;
+    border-radius: 3px;
+    border: 2px solid bisque;
+    background: transparent;
+    color: bisque;
+}
