@@ -1,28 +1,25 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="eg-slideshow" id="app">
+    <introduction-slide></introduction-slide>
+    <slide enter="fadeIn" leave="bounceOutLeft">Test 1</slide>
+    <slide enter="fadeIn" leave="bounceOutLeft">Test 2</slide>
+    <slide enter="fadeIn" leave="bounceOutLeft">Test 3</slide>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import { Slideshow } from "eagle.js";
+import IntroductionSlide from "./slides/1-introduction.vue";
 
 export default {
-  name: "app",
-  components: {
-    HelloWorld
-  }
+  name: "AppSlideshow",
+  mixins: [Slideshow],
+  components: { IntroductionSlide }
 };
 </script>
 
-<style lang="scss">
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss" scoped>
+.eg-slideshow {
+  background-color: white;
 }
 </style>

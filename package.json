@@ -8,6 +8,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "animate.css": "^3.5.0",
+    "eagle.js": "^0.2.1-beta2",
     "vue": "^2.5.16"
   },
   "devDependencies": {
@@ -15,10 +17,13 @@
     "@vue/cli-plugin-eslint": "^3.0.0-rc.3",
     "@vue/cli-service": "^3.0.0-rc.3",
     "@vue/eslint-config-prettier": "^3.0.0-rc.3",
+    "eslint": "4",
+    "eslint-plugin-vue": "^4.5.0",
     "lint-staged": "^6.0.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
-    "vue-template-compiler": "^2.5.16"
+    "vue-template-compiler": "^2.5.16",
+    "webpack": "^4.12.1"
   },
   "browserslist": [
     "> 1%",
@@ -37,5 +42,8 @@
       "vue-cli-service lint",
       "git add"
     ]
+  },
+  "peerDependencies": {
+    "eagle.js": "^0.2.1-beta2"
   }
 }
