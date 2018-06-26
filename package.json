@@ -1,9 +1,7 @@
 {
-  "name": "reveal.js",
-  "version": "3.6.0",
-  "description": "The HTML Presentation Framework",
-  "homepage": "http://revealjs.com",
-  "subdomain": "revealjs",
+  "name": "vue-group-meeting-presentation",
+  "version": "1.0.0",
+  "description": "A short presentation to showcase Vue.js",
   "main": "js/reveal.js",
   "scripts": {
     "test": "grunt test",
@@ -11,13 +9,12 @@
     "build": "grunt"
   },
   "author": {
-    "name": "Hakim El Hattab",
-    "email": "hakim.elhattab@gmail.com",
-    "web": "http://hakim.se"
+    "name": "Matthew Turner",
+    "email": "turnerml@ornl.gov"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/hakimel/reveal.js.git"
+    "url": "git://github.com/mlturner88/vue-group-meeting-presentation.git"
   },
   "engines": {
     "node": ">=4.0.0"
