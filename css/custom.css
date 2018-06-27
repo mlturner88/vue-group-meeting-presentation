@@ -33,7 +33,7 @@
 }
 
 code.darken {
-    color: #bf9d9d;
+  color: #bf9d9d;
 }
 
 #form-example-app {
@@ -63,4 +63,8 @@ code.darken {
   border: 2px solid bisque;
   background: transparent;
   color: bisque;
+}
+
+.condense {
+  font-size: 0.75em !important;
 }

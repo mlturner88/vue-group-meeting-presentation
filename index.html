@@ -257,7 +257,7 @@
 
 			<section>
 				<h3>Component Input</h3>
-				<div>We need to define the input parameters for our form component. We need to know what the label is, the form value and
+				<div class="condense">We need to define the input parameters for our form component. We need to know what the label is, the form value and
 					what type of input it is.</div>
 				<pre class="fragment"><code data-trim data-noescape>
 					var component = {
@@ -311,6 +311,26 @@
 					                    input-type="text"></vue-form-component>
 					<div>Your name is {{ firstName }} {{ lastName }}</div>
 				</div>
+			</section>
+
+			<section>
+				<h3>Vue Single File Components</h3>
+				<div class="condense">The typical way to write Vue code is to use SFCs (Single File Components) which are inside of
+					<code class="darken">*.vue</code> files. These are simply files that have a section for your template, your JavaScript and also your stylesheets. This
+					keeps everything about a component together and assists with seperation of concerns.</div>
+				<pre class="fragment"><code data-trim data-noescape>
+					&lt;template&gt;
+					 &lt;div&gt;{{ message }}&lt;div&gt;
+					&lt;/template&gt;
+					
+					&lt;script&gt;
+					 var component = { /* ... */ };
+					&lt;/script&gt;
+					
+					&lt;style&gt;
+					 .my-class { /* ... */ }
+					&lt;/style&gt;
+				</code></pre>
 			</section>
 
 			<section data-markdown>
