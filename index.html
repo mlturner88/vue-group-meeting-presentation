@@ -6,7 +6,7 @@
 	<meta name="viewport"
 	      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<title>reveal.js</title>
+	<title>Welcome to Vue.js!</title>
 
 	<link rel="stylesheet"
 	      href="css/reveal.css">
@@ -53,20 +53,24 @@
 				</textarea>
 			</section>
 
-			<section>
-				<h2>What Is Vue?</h2>
-				<ul>
-					<li>Vue is a frontend framework for building user interfaces on the web. It is used to create SPAs (single page applications).</li>
-					<li class="fragment">Vue is only focused on the view layer of a SPA and is very easy to get started with. This also means that it is very
-						easy to integrate with any other JavaScript/frontend libraries available.</li>
-				</ul>
+			<section data-markdown>
+				<script type="text/template">
+					## What Is Vue?
+
+					* Vue is a frontend framework for building user interfaces on the web. It is used to create SPAs (single page applications). <!-- .element: class="fragment" -->
+					* Vue is only focused on the view layer of a SPA and is very easy to get started with. This also means that it is very easy to integrate with any other JavaScript/frontend libraries available.  <!-- .element: class="fragment" -->
+				</script>
 			</section>
 
 			<section>
 				<h3>Vue Template</h3>
 				<div>Creating a template in Vue is just simple HTML.</div>
 				<pre class="fragment"><code data-trim data-noescape>
-					&lt;div&gt;{{ message }}&lt;/div&gt;
+					&lt;body&gt;
+					 &lt;div&gt;
+					  {{ message }}
+					 &lt;/div&gt;
+					&lt;/body&gt;
 				</code></pre>
 			</section>
 
@@ -104,8 +108,8 @@
 
 			<section>
 				<h3>Conditional Rendering</h3>
-				<div>In our component object we initialize our index field as a data property. We also define our click event handler as a
-					method.
+				<div>In our component object we initialize our index field as a data property. We also define our
+					<code class="darken">click event handler</code> as a method.
 				</div>
 				<pre class="fragment"><code data-trim data-noescape>
 					var component = {
@@ -125,7 +129,9 @@
 			</section>
 
 			<section data-state="conditional">
-				<h2>Conditional Rendering (Example)</h2>
+				<h3>Conditional Rendering (Example)</h3>
+				<div>The below is a working example of the previous Vue code. Clicking the button will cycle between the 3
+					<code class="darken">spans</code>.</div>
 				<div id="conditional-example-app">
 					<div>
 						<span v-if="index === 0"
@@ -175,7 +181,8 @@
 			</section>
 
 			<section data-state="lists">
-				<h2>Conditional Rendering (Example)</h2>
+				<h3>Conditional Rendering (Example)</h3>
+				<div>The result is the below bullet list of cities and their state.</div>
 				<div id="list-example-app">
 					<ul>
 						<li v-for="entry in cities"
@@ -205,9 +212,9 @@
 
 			<section>
 				<h3>Computed Properties</h3>
-				<div>There are many circumstances where we need to react to data and transform or modify it in some way before we can render
-					it. Let's say in our previous example we wanted the cities to be alphabetized. We can declare a computed property like
-					below which sorts our cities.</div>
+				<div>The only thing that needs to change in our template is to replace the
+					<code class="darken">cities</code> variable with our
+					<code class="darken">sortedCities</code> computed property instead.</div>
 				<pre class="fragment"><code data-trim data-noescape>
 					&lt;div&gt;
 					 &lt;ul&gt;
@@ -224,7 +231,8 @@
 				<div>A computed property is used just like a regular data property. The difference is that Vue caches the results of the computed
 					factory and will only re-evaluate the computed property when it detects that any of the underlying data in the computed
 					property has changed.</div>
-				<div id="computed-example-app" class="fragment">
+				<div id="computed-example-app"
+				     class="fragment">
 					<ul>
 						<li v-for="(entry, i) in sortedCities"
 						    :key="entry.name"
@@ -275,8 +283,11 @@
 
 			<section>
 				<h3>Using Our Component</h3>
-				<div>What makes Vue powerful is its ability to combine all of these basic concepts into reusable components. We'll next show
-					a basic input form component that may be re-used. The form will have a label and an input field.</div>
+				<div>In order to use our new component inside the template of another component is to add a custom HTML element. These need
+					to be converted to kebab case as per the
+					<a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements"
+					   target="_blank">custom element HTML standard.</a>
+				</div>
 				<pre class="fragment"><code data-trim data-noescape>
 					&lt;vue-form-component
 					   v-model="firstName"
@@ -294,7 +305,7 @@
 				<div id="form-example-app">
 					<vue-form-component v-model="firstName"
 					                    input-label="First Name:"
-										input-type="text"></vue-form-component>
+					                    input-type="text"></vue-form-component>
 					<vue-form-component v-model="lastName"
 					                    input-label="Last Name:"
 					                    input-type="text"></vue-form-component>
