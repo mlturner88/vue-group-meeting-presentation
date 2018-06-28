@@ -11,3 +11,6 @@ node_modules/
 .sass-cache
 css/reveal.min.css
 js/reveal.min.js
+yarn-error.log
+lib/js/lodash.min.js
+lib/js/vue.min.js
