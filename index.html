@@ -3,21 +3,16 @@
 
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport"
-	      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 	<title>Welcome to Vue.js!</title>
 
-	<link rel="stylesheet"
-	      href="css/reveal.css">
-	<link rel="stylesheet"
-	      href="css/theme/black.css">
-	<link rel="stylesheet"
-	      href="css/custom.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css">
+	<link rel="stylesheet" href="css/custom.css">
 
 	<!-- Theme used for syntax highlighting of code -->
-	<link rel="stylesheet"
-	      href="lib/css/zenburn.css">
+	<link rel="stylesheet" href="lib/css/zenburn.css">
 
 	<!-- Printing and PDF exports -->
 	<script>
@@ -33,21 +28,16 @@
 	<!-- <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script> -->
 	<script src="lib/js/vue.min.js"></script>
 	<script src="lib/js/lodash.min.js"></script>
-	<script src="js/conditional-example.js"
-	        defer></script>
-	<script src="js/list-example.js"
-	        defer></script>
-	<script src="js/computed-example.js"
-	        defer></script>
-	<script src="js/form-example.js"
-	        defer></script>
+	<script src="js/conditional-example.js" defer></script>
+	<script src="js/list-example.js" defer></script>
+	<script src="js/computed-example.js" defer></script>
+	<script src="js/form-example.js" defer></script>
 </head>
 
 <body>
 	<div class="reveal">
 		<div class="slides">
-			<section class="introduction"
-			         data-markdown>
+			<section class="introduction" data-markdown>
 				<textarea data-template>
 					![Vue Logo](assets/vue_logo.png)
 
@@ -78,8 +68,8 @@
 
 			<section>
 				<h3>Vue Components</h3>
-				<div>Vue is a component-based library which means that we build our SPA using reusable pieces. We use basic JavaScript objects
-					to define our components.</div>
+				<div>Vue is a component-based library which means that we build our SPA using reusable pieces. We use basic JavaScript
+					objects to define our components.</div>
 				<pre class="fragment"><code data-trim data-noescape>
 					var component = {
 					 name: "MyComponent",
@@ -94,9 +84,9 @@
 
 			<section>
 				<h3>Conditional Rendering</h3>
-				<div>We can use Vue-specific syntax to conditionally render HTML elements. In the below code, we want to only show one element
-					depending on an index field. Also, we want to toggle the index when the button is clicked. We use Vue to hook up the
-					click event. elements.
+				<div>We can use Vue-specific syntax to conditionally render HTML elements. In the below code, we want to only show one
+					element depending on an index field. Also, we want to toggle the index when the button is clicked. We use Vue to hook
+					up the click event. elements.
 				</div>
 				<pre class="fragment"><code data-trim data-noescape>
 					&lt;div&gt;
@@ -136,15 +126,11 @@
 					<code class="darken">spans</code>.</div>
 				<div id="conditional-example-app">
 					<div>
-						<span v-if="index === 0"
-						      class="color1">First</span>
-						<span v-else-if="index === 1"
-						      class="color2">Second</span>
-						<span v-else-if="index === 2"
-						      class="color3">Third</span>
+						<span v-if="index === 0" class="color1">First</span>
+						<span v-else-if="index === 1" class="color2">Second</span>
+						<span v-else-if="index === 2" class="color3">Third</span>
 					</div>
-					<button class="custom-button"
-					        @click="toggle">Toggle</button>
+					<button class="custom-button" @click="toggle">Toggle</button>
 				</div>
 			</section>
 
@@ -187,8 +173,7 @@
 				<div>The result is the below bullet list of cities and their state.</div>
 				<div id="list-example-app">
 					<ul>
-						<li v-for="entry in cities"
-						    :key="entry.name">
+						<li v-for="entry in cities" :key="entry.name">
 							{{ entry.name }}, {{ entry.state }}
 						</li>
 					</ul>
@@ -197,9 +182,9 @@
 
 			<section>
 				<h3>Computed Properties</h3>
-				<div>There are many circumstances where we need to react to data and transform or modify it in some way before we can render
-					it. Let's say in our previous example we wanted the cities to be alphabetized. We can declare a computed property like
-					below which sorts our cities.</div>
+				<div>There are many circumstances where we need to react to data and transform or modify it in some way before we can
+					render it. Let's say in our previous example we wanted the cities to be alphabetized. We can declare a computed property
+					like below which sorts our cities.</div>
 				<pre class="fragment"><code data-trim data-noescape>
 					var component = {
 					  data: function() { [ /* ... */ ] },
@@ -230,15 +215,12 @@
 
 			<section data-state="computed">
 				<h3>Computed Properties</h3>
-				<div>A computed property is used just like a regular data property. The difference is that Vue caches the results of the computed
-					factory and will only re-evaluate the computed property when it detects that any of the underlying data in the computed
-					property has changed.</div>
-				<div id="computed-example-app"
-				     class="fragment">
+				<div>A computed property is used just like a regular data property. The difference is that Vue caches the results of
+					the computed factory and will only re-evaluate the computed property when it detects that any of the underlying data
+					in the computed property has changed.</div>
+				<div id="computed-example-app" class="fragment">
 					<ul>
-						<li v-for="(entry, i) in sortedCities"
-						    :key="entry.name"
-						    :class="'color' + (i + 1)">
+						<li v-for="(entry, i) in sortedCities" :key="entry.name" :class="'color' + (i + 1)">
 							{{ entry.name }}, {{ entry.state }}
 						</li>
 					</ul>
@@ -247,8 +229,8 @@
 
 			<section>
 				<h3>Reusable Components</h3>
-				<div>What makes Vue powerful is its ability to combine all of these basic concepts into reusable components. We'll next show
-					a basic input form component that may be re-used. The form will have a label and an input field.</div>
+				<div>What makes Vue powerful is its ability to combine all of these basic concepts into reusable components. We'll next
+					show a basic input form component that may be re-used. The form will have a label and an input field.</div>
 				<pre class="fragment"><code data-trim data-noescape>
 					&lt;div&gt;
 					 &lt;label&gt;{{ inputLabel }}&lt;/label&gt;
@@ -259,8 +241,8 @@
 
 			<section>
 				<h3>Component Input</h3>
-				<div class="condense">We need to define the input parameters for our form component. We need to know what the label is, the form value and
-					what type of input it is.</div>
+				<div class="condense">We need to define the input parameters for our form component. We need to know what the label is,
+					the form value and what type of input it is.</div>
 				<pre class="fragment"><code data-trim data-noescape>
 					var component = {
 					 name: "FormComponent",
@@ -285,10 +267,10 @@
 
 			<section>
 				<h3>Using Our Component</h3>
-				<div>In order to use our new component inside the template of another component is to add a custom HTML element. These need
-					to be converted to kebab case as per the
-					<a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements"
-					   target="_blank">custom element HTML standard.</a>
+				<div>In order to use our new component inside the template of another component is to add a custom HTML element. These
+					need to be converted to kebab case as per the
+					<a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements" target="_blank">custom element
+						HTML standard.</a>
 				</div>
 				<pre class="fragment"><code data-trim data-noescape>
 					&lt;vue-form-component
@@ -305,12 +287,8 @@
 			<section data-state="form">
 				<h3>Component Form Example</h3>
 				<div id="form-example-app">
-					<vue-form-component v-model="firstName"
-					                    input-label="First Name:"
-					                    input-type="text"></vue-form-component>
-					<vue-form-component v-model="lastName"
-					                    input-label="Last Name:"
-					                    input-type="text"></vue-form-component>
+					<vue-form-component v-model="firstName" input-label="First Name:" input-type="text"></vue-form-component>
+					<vue-form-component v-model="lastName" input-label="Last Name:" input-type="text"></vue-form-component>
 					<div>Your name is {{ firstName }} {{ lastName }}</div>
 				</div>
 			</section>
@@ -318,8 +296,8 @@
 			<section>
 				<h3>Vue Single File Components</h3>
 				<div class="condense">The typical way to write Vue code is to use SFCs (Single File Components) which are inside of
-					<code class="darken">*.vue</code> files. These are simply files that have a section for your template, your JavaScript and also your stylesheets. This
-					keeps everything about a component together and assists with seperation of concerns.</div>
+					<code class="darken">*.vue</code> files. These are simply files that have a section for your template, your JavaScript
+					and also your stylesheets. This keeps everything about a component together and assists with seperation of concerns.</div>
 				<pre class="fragment"><code data-trim data-noescape>
 					&lt;template&gt;
 					 &lt;div&gt;{{ message }}&lt;div&gt;

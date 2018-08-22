@@ -178,7 +178,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-copy");
 
   // Default task
-  grunt.registerTask("default", ["css", "js"]);
+  grunt.registerTask("default", ["copy", "css", "js"]);
 
   // JS task
   grunt.registerTask("js", ["jshint", "uglify", "qunit", "copy"]);
@@ -196,7 +196,7 @@ module.exports = function(grunt) {
   grunt.registerTask("package", ["default", "zip"]);
 
   // Serve presentation locally
-  grunt.registerTask("serve", ["connect", "watch"]);
+  grunt.registerTask("serve", ["copy", "connect", "watch"]);
 
   // Run tests
   grunt.registerTask("test", ["jshint", "qunit"]);
